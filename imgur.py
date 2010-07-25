@@ -74,7 +74,7 @@ class imgur:
         """
         data = urllib.urlencode({"view": view})
         response = urllib.urlopen("http://imgur.com/api/stats.json", data)
-        return simplejson.loads(response.read())
+        return json.loads(response.read())
 
     def gallery(self, sort="latest", view="all", count=20, page=1):
         """
