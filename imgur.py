@@ -80,8 +80,8 @@ class imgur:
         """
         postdata = {"sort": sort,
                     "view": view,
-                    "count", count,
-                    "page", page}
+                    "count": count,
+                    "page": page}
         data = urllib.urlencode(postdata)
         response = urllib.urlopen("http://imgur.com/api/stats.json", data)
         return simplejson.loads(response.read())
