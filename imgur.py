@@ -3,7 +3,10 @@
 __author__ = 'Devon Meunier <devon.meunier@myopicvoid.org>'
 __description__ = "A Pythonic interface to the imgur api."
 
-import simplejson
+try:
+    import simplejson as json
+except ImportError:
+    import json
 try:
     import urllib2 as urllib
 except ImportError:
@@ -30,7 +33,7 @@ class imgur:
                         "image": base64.b64encode(image)}
             data = urllib.urlencode(postdata)
             response = urllib.urlopen("http://imgur.com/api/upload.json", data)
-            return simplejson.loads(response.read())
+            return json.loads(response.read())
 
     def upload_from_url(self, image):
         """
@@ -46,7 +49,7 @@ class imgur:
                         "image": image}
             data = urllib.urlencode(postdata)
             response = urllib.urlopen("http://imgur.com/api/upload.json", data)
-            return simplejson.loads(response.read())  
+            return json.loads(response.read())  
 
     def delete(self, dhash):
         """
@@ -56,14 +59,14 @@ class imgur:
         Returns the parsed json that imgur returns.
         """
         response = urllib.urlopen("http://imgur.com/api/delete/%s.json" % dhash)
-        return simplejson.loads(response.read())
+        return json.loads(response.read())
 
     def istats(self, ihash):
         """
         Returns the image's stats corresponding to its hash, ihash.
         """
         response = urllib.urlopen("http://imgur.com/api/stats/%s.json" % ihash)
-        return simplejson.loads(response.read())
+        return json.loads(response.read())
 
     def stats(self, view="all"):
         """
@@ -84,4 +87,4 @@ class imgur:
                     "page": page}
         data = urllib.urlencode(postdata)
         response = urllib.urlopen("http://imgur.com/api/stats.json", data)
-        return simplejson.loads(response.read())
+        return json.loads(response.read())
