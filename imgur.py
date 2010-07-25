@@ -2,6 +2,7 @@
 
 __author__ = 'Devon Meunier <devon.meunier@myopicvoid.org>'
 __description__ = "A Pythonic interface to the imgur api."
+__version__ = '0.7.5'
 
 try:
     import simplejson as json
