@@ -4,17 +4,16 @@ __author__ = 'Devon Meunier <devon.meunier@myopicvoid.org>'
 __description__ = "A Pythonic interface to the imgur api."
 __version__ = '0.7.5'
 
+import urllib
 try:
     import simplejson as json
 except ImportError:
     import json
-try:
-    import urllib2 as urllib
-except ImportError:
-    import urllib
+
 
 class imgurAPIError(Exception):
     pass
+
 
 class imgur:
     def __init__(self, apikey=None):
